@@ -18,7 +18,7 @@ public class JarReplaceRepack extends Application<IOException> {
     @Override
     protected int work(String[] args) throws IOException {
 
-    	File workingDir = new File("/tmp/test");
+    	File workingDir = new File();
     	
     	
     	TFile[] jarFiles = new TFile(workingDir).listFiles(new FilenameFilter() {
