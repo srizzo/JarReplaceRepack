@@ -31,7 +31,7 @@ public class Tree extends Application<RuntimeException> {
 
     @Override
     protected int work(String[] args) {
-        graph(new TFile("/tmp/test.zip"), "", "");
+        graph(new TFile("/tmp/test/test.zip"), "", "");
         return 0;
     }
 

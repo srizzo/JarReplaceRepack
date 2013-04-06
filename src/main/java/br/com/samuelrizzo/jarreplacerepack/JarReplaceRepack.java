@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.security.CodeSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +19,24 @@ public class JarReplaceRepack extends Application<IOException> {
 
     @Override
     protected int work(String[] args) throws IOException {
-
-    	File workingDir = new File();
+    	
+    	final File jarFile;
+		try {
+	    	CodeSource codeSource = JarReplaceRepack.class.getProtectionDomain().getCodeSource();
+			jarFile = new File(codeSource.getLocation().toURI().getPath());
+		} catch (URISyntaxException e) {
+			throw new RuntimeException(e);
+		}
+		
+		
+//    	File workingDir = new File(System.getProperty("user.dir"));
+    	File workingDir = new File("/tmp/test/");
     	
     	
     	TFile[] jarFiles = new TFile(workingDir).listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
-				return name.matches(".*(jar|war|ear|zip)$");
+				return name.matches(".*(jar|war|ear|zip)$") && !name.equals(jarFile.getName());
 			}
 		});
     	
@@ -75,9 +87,11 @@ public class JarReplaceRepack extends Application<IOException> {
     
     private List<TFile> findDestinationFileFor(TFile jar, File template) {
     	List<TFile> foundDestinations = new ArrayList<TFile>();
-    	List<TFile> jarFiles = ls_r(jar);
-    	for (TFile file : jarFiles) {
-			if(file.isFile() && file.getName().matches(template.getName())){
+    	List<TFile> jarContent = ls_r(jar);
+    	
+    	
+    	for (TFile file : jarContent) {
+			if(file.isFile() && file.getName().equals(template.getName())){
 				foundDestinations.add(file);
 			}
 		}
@@ -93,7 +107,7 @@ public class JarReplaceRepack extends Application<IOException> {
         
         files.add(file);
         
-        if (file.isDirectory()) {
+        if (file.listFiles() != null) {
             TFile[] entries = file.listFiles();
             int l = entries.length - 1;
             if (0 <= l) {
