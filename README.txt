@@ -1,17 +1,17 @@
-Replaces files in a Jar with matching files on a subdirectory
-
+Replaces files in a jar with matching files on a subdirectory. 
 
 Example:
 
 # Your jar with a config.properties file that'll be replace on each environment
 /tmp/MyJar.jar                      
 
+# Each sibling folder'll be treated as a profile, and its content used as replacement (matched by filename)
 /tmp/test/config.properties         # Test environment version
 /tmp/production/config.properties   # Production environment version
 
 Usage: 
 
-Just throw the JarReplaceRepack.jar at the working dir and run it
+Just throw the JarReplaceRepack.jar at your working dir and run it
 
 /tmp$ java -jar JarReplaceRepack.jar
 
@@ -24,3 +24,5 @@ Output:
 
 
 
+
+License: Public Domain
