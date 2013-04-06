@@ -3,7 +3,9 @@ Replaces files in a Jar with matching files on a subdirectory
 
 Example:
 
-/tmp/MyJar.jar                      # Your jar with a config.properties file that'll be replace on each environment
+# Your jar with a config.properties file that'll be replace on each environment
+/tmp/MyJar.jar                      
+
 /tmp/test/config.properties         # Test environment version
 /tmp/production/config.properties   # Production environment version
 
