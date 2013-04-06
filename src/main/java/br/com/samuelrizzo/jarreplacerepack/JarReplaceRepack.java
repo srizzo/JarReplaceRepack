@@ -64,6 +64,7 @@ public class JarReplaceRepack extends Application<IOException> {
         			}
         		});
 
+        		System.out.println("Created " + destinationJar.getAbsolutePath());
                 originalJar.cp_rp(destinationJar);
         		
         		for (File template : templates) {
@@ -75,8 +76,8 @@ public class JarReplaceRepack extends Application<IOException> {
         			}
         			
         			for (TFile destinationFile : destinationFiles) {
-        				System.out.println(destinationFile.getPath() + " replaced with " + template.getAbsolutePath());
                         new TFile(template).cp_rp(destinationFile);
+        				System.out.println("Replaced " + destinationFile.getPath() + " with contents of " + template.getAbsolutePath());
 					}
 				}
     		}

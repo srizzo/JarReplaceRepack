@@ -91,97 +91,6 @@
 
 	<build>
 		<plugins>
-	
-<!--         <plugin> -->
-<!--             <groupId>org.apache.maven.plugins</groupId> -->
-<!--             <artifactId>maven-dependency-plugin</artifactId> -->
-<!--             <executions> -->
-<!--                 <execution> -->
-<!--                     <id>copy-dependencies</id> -->
-<!--                     <phase>prepare-package</phase> -->
-<!--                     <goals> -->
-<!--                         <goal>copy-dependencies</goal> -->
-<!--                     </goals> -->
-<!--                     <configuration> -->
-<!--                         <outputDirectory>${project.build.directory}/classes</outputDirectory> -->
-<!--                         <overWriteReleases>false</overWriteReleases> -->
-<!--                         <overWriteSnapshots>false</overWriteSnapshots> -->
-<!--                         <overWriteIfNewer>true</overWriteIfNewer> -->
-<!--                     </configuration> -->
-<!--                 </execution> -->
-<!--             </executions> -->
-<!--         </plugin> -->
-<!--         <plugin> -->
-<!--             <groupId>org.apache.maven.plugins</groupId> -->
-<!--             <artifactId>maven-jar-plugin</artifactId> -->
-<!--             <configuration> -->
-<!--                 <archive> -->
-<!--                     <manifest> -->
-<!--                         <addClasspath>true</addClasspath> -->
-<!--                         <mainClass>br.com.samuelrizzo.jarreplacerepack.JarReplaceRepack</mainClass> -->
-<!--                     </manifest> -->
-<!--                 </archive> -->
-<!--             </configuration> -->
-<!--         </plugin> -->
-
-
-
-            	
-<!-- 			<plugin> -->
-<!-- 				<artifactId>maven-assembly-plugin</artifactId> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<phase>package</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>attached</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 				<configuration> -->
-<!-- 					<descriptorRefs> -->
-<!-- 						<descriptorRef>jar-with-dependencies</descriptorRef> -->
-<!-- 					</descriptorRefs> -->
-<!-- 					<archive> -->
-<!-- 						<manifest> -->
-<!-- 							<mainClass>br.com.samuelrizzo.jarreplacerepack.JarReplaceRepack</mainClass> -->
-<!-- 						</manifest> -->
-<!-- 					</archive> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
-
-<!-- 	<plugin> -->
-<!-- 		<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 		<artifactId>maven-shade-plugin</artifactId> -->
-<!-- 		<version>2.0</version> -->
-<!-- 		<executions> -->
-<!-- 			<execution> -->
-<!-- 				<phase>package</phase> -->
-<!-- 				<goals> -->
-<!-- 					<goal>shade</goal> -->
-<!-- 				</goals> -->
-<!-- 				<configuration> -->
-<!-- 					<transformers> -->
-<!-- 						<transformer -->
-<!-- 							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> -->
-<!-- 							<mainClass>br.com.samuelrizzo.jarreplacerepack.JarReplaceRepack</mainClass> -->
-<!-- 						</transformer> -->
-<!-- 					</transformers> -->
-<!--               <filters> -->
-<!--                 <filter> -->
-<!--                   <artifact>*:*</artifact> -->
-<!--                   <excludes> -->
-<!--                     <exclude>META-INF/*.SF</exclude> -->
-<!--                     <exclude>META-INF/*.DSA</exclude> -->
-<!--                     <exclude>META-INF/*.RSA</exclude> -->
-<!--                   </excludes> -->
-<!--                 </filter> -->
-<!--               </filters>					 -->
-<!-- 				</configuration> -->
-<!-- 			</execution> -->
-<!-- 		</executions> -->
-<!-- 	</plugin> -->
-
-
           <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
             <executions>
@@ -200,7 +109,7 @@
                   <goal>shade</goal>
                 </goals>
                 <configuration>
-<!--                   <finalName>${project.artifactId}-by-shade</finalName> -->
+                  <finalName>${project.artifactId}</finalName>
                   <transformers>
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                   <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
