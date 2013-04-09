@@ -2,16 +2,18 @@ Replaces files in a jar with matching files on a subdirectory.
 
 Example:
 
-# Your jar with a config.properties file that'll be replace on each environment
+# A jar containing a file named config.properties
+# anywhere in its folder hierarchy, including nested jars. 
+# This file'll be replaced with the template in each profile.
 /tmp/MyJar.jar                      
 
-# Each sibling folder'll be treated as a profile, and its content used as replacement (matched by filename)
+# Each sibling folder'll be treated as a different profile, and its templates used as replacements (matching by filename)
 /tmp/test/config.properties         # Test environment version
 /tmp/production/config.properties   # Production environment version
 
 Usage: 
 
-Just throw the JarReplaceRepack.jar at your working dir and run it
+Just throw the JarReplaceRepack.jar at the same folder, and run it
 
 /tmp$ java -jar JarReplaceRepack.jar
 

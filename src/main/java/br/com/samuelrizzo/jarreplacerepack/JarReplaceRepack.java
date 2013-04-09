@@ -24,7 +24,9 @@ public class JarReplaceRepack extends Application<IOException> {
     @Override
     protected int work(String[] args) throws IOException {
 
-    	File workingDir = new File(System.getProperty("user.dir"));
+		final File executable = getExecutable();
+    	
+		File workingDir = executable.getParentFile();
     	
     	try {
     		
@@ -33,7 +35,7 @@ public class JarReplaceRepack extends Application<IOException> {
         	TFile[] jarFiles = new TFile(workingDir).listFiles(new FilenameFilter() {
     			@Override
     			public boolean accept(File dir, String name) {
-    				return name.matches(".*(jar|war|ear|zip)$") && !name.equals(getExecutable().getName());
+					return name.matches(".*(jar|war|ear|zip)$") && !name.equals(executable.getName());
     			}
     		});
         	
